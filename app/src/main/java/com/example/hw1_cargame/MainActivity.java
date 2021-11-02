@@ -18,21 +18,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     /*Game fields*/
     //Views
-    private ImageView game_grid[][];
+    private ImageView[][] game_grid;
     private ImageView[] game_hearts;
     private ImageButton game_left_btn, game_right_btn, game_btn_pause;
     private TextView game_score_label;
     private RelativeLayout game_layout;
     //Vars
     private int score;
-    private int COLLISION_SCORE_SUB = 1000;
-    private int FORWARD_SCORE_ADD = 200;
+    final private int COLLISION_SCORE_SUB = 1000;
+    final private int FORWARD_SCORE_ADD = 200;
     private int cols,rows;
     private int car_col;
     private Random rand;
@@ -41,14 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     private final int START_DELAY = 1000;
     private int delay;
-    private int speedup_score_step = 1000;
-    private double delay_reduce_factor = 0.95;
-    private Runnable forward_run = new Runnable() {
-        @Override
-        public void run() {
-            forwardGrid();
-            startTimer();
-        }
+    final private int SPEEDUP_SCORE_STEP = 1000;
+    final private double DELAY_REDUCE_FACTOR = 0.95;
+    final private Runnable forward_run = () -> {
+        forwardGrid();
+        startTimer();
     };
     //Vibrate vars
     Vibrator vib;
@@ -58,26 +56,20 @@ public class MainActivity extends AppCompatActivity {
     /*Entry fields*/
     private Button entry_play_btn;
     private RelativeLayout entry_layout;
-    private View.OnClickListener play_btn_handler = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            setupGame();
-            startTimer();
-        }
+    final private View.OnClickListener play_btn_handler = v -> {
+        setupGame();
+        startTimer();
     };
 
     /*Pause fields*/
     private boolean resume;
     private Button pause_resume_btn;
     private RelativeLayout pause_layout;
-    private View.OnClickListener pause_resume_btn_handler = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            resume = true;
-            pause_layout.setVisibility(View.INVISIBLE);
-            initGameBtns();
-            startTimer();
-        }
+    final private View.OnClickListener pause_resume_btn_handler = v -> {
+        resume = true;
+        pause_layout.setVisibility(View.INVISIBLE);
+        initGameBtns();
+        startTimer();
     };
 
     /*GameOver fields*/
@@ -91,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_panel);
-        getSupportActionBar().hide(); //Hide app header
+        Objects.requireNonNull(getSupportActionBar()).hide(); //Hide app header
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //ignore night mode
         fixBackground();
         findViews();
@@ -175,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initHearts(){
-        for (int i = 0; i < game_hearts.length; i++)
-            game_hearts[i].setVisibility(View.VISIBLE);
+        for (ImageView heart : game_hearts)
+            heart.setVisibility(View.VISIBLE);
     }
 
     private void initVib(){
@@ -199,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
     /*-----------------Timer-----------------*/
     private void startTimer(){
         if(resume) {
-            delay = (int) (START_DELAY *  Math.pow(delay_reduce_factor,score/speedup_score_step+1));
+            delay = (int) (START_DELAY *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
             handler.postDelayed(forward_run, delay);
         }
     }
@@ -250,8 +242,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void addScore(int addition){
         score+=addition;
-        score = score>0?score:0;
-        game_score_label.setText(score+"");
+        score = Math.max(score, 0);
+        game_score_label.setText((""+score));
     }
 
     private void forwardGrid(){
@@ -341,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
         gameover_layout.setVisibility(View.VISIBLE);
         game_layout.setVisibility(View.INVISIBLE);
         pause_layout.setVisibility(View.INVISIBLE);
-        gameover_score_label.setText("SCORE: "+score);
+        gameover_score_label.setText(("SCORE: "+score));
     }
 
 }
