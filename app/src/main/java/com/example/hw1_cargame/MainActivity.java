@@ -2,7 +2,6 @@ package com.example.hw1_cargame;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,9 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.Objects;
 import java.util.Random;
 
@@ -38,20 +35,22 @@ public class MainActivity extends AppCompatActivity {
     private int car_col;
     private Random rand;
     private boolean random_row0;
+    //Vibrate vars
+    Vibrator vib;
+    final int COLLISION_VIBE_TIME=200;
+    final int GAME_BTN_VIBE_TIME=10;
     //Timer vars
     private final Handler handler = new Handler();
     private final int START_DELAY = 1000;
     private int delay;
     final private int SPEEDUP_SCORE_STEP = 1000;
     final private double DELAY_REDUCE_FACTOR = 0.95;
+    private boolean resume;
     final private Runnable forward_run = () -> {
         forwardGrid();
-        startTimer();
+        if(resume)
+            startTimer();
     };
-    //Vibrate vars
-    Vibrator vib;
-    final int COLLISION_VIBE_TIME=200;
-    final int GAME_BTN_VIBE_TIME=10;
 
     /*Entry fields*/
     private Button entry_play_btn;
@@ -62,11 +61,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     /*Pause fields*/
-    private boolean resume;
     private Button pause_resume_btn;
     private RelativeLayout pause_layout;
     final private View.OnClickListener pause_resume_btn_handler = v -> {
-        resume = true;
         pause_layout.setVisibility(View.INVISIBLE);
         initGameBtns();
         startTimer();
@@ -76,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private Button gameover_play_btn;
     private RelativeLayout gameover_layout;
     private TextView gameover_score_label;
+    final private int GAMEOVER_DELAY = 2000;
 
 
     /*-----------------Android time circle funtions-----------------*/
@@ -190,13 +188,13 @@ public class MainActivity extends AppCompatActivity {
 
     /*-----------------Timer-----------------*/
     private void startTimer(){
-        if(resume) {
-            delay = (int) (START_DELAY *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
-            handler.postDelayed(forward_run, delay);
-        }
+        resume = true;
+        delay = (int) (START_DELAY *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
+        handler.postDelayed(forward_run, delay);
     }
 
     private void stopTimer(){
+        resume = false;
         handler.removeCallbacks(forward_run);
     }
 
@@ -207,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
         cols = game_grid[0].length;
         rand = new Random();
         random_row0 = false;
-        resume = true;
         delay = START_DELAY;
         initGrid();
         initHearts();
@@ -230,14 +227,12 @@ public class MainActivity extends AppCompatActivity {
             game_grid[rows-1][car_col].setVisibility(View.VISIBLE);
         }
     }
-    
+
     private void vibrate(int millisec){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             vib.vibrate(VibrationEffect.createOneShot(millisec, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            //deprecated in API 26 
-            vib.vibrate(millisec);
-        }
+        else
+            vib.vibrate(millisec);  //deprecated in API 26
     }
 
     private void addScore(int addition){
@@ -263,6 +258,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void copyRow(int from_row, int to_row){
+        for (int j = 0; j < cols; j++) {
+            game_grid[to_row][j].setVisibility(game_grid[from_row][j].getVisibility());
+            game_grid[to_row][j].setImageResource(R.drawable.ic_rock);
+        }
+    }
+
     private void randomRow0(){
         setRowInvisible(0);
         game_grid[0][rand.nextInt(cols)].setVisibility(View.VISIBLE);
@@ -271,13 +273,6 @@ public class MainActivity extends AppCompatActivity {
     private void setRowInvisible(int row){
         for (int j = 0; j < cols; j++)
             game_grid[row][j].setVisibility(View.INVISIBLE);
-    }
-
-    private void copyRow(int from_row, int to_row){
-        for (int j = 0; j < cols; j++) {
-            game_grid[to_row][j].setVisibility(game_grid[from_row][j].getVisibility());
-            game_grid[to_row][j].setImageResource(R.drawable.ic_rock);
-        }
     }
 
     private void performCollision(){
@@ -291,27 +286,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
+        //score update
         addScore(-COLLISION_SCORE_SUB);
+        //gameover
         if(game_hearts[0].getVisibility()==View.INVISIBLE)
             setupGameOver();
-    }
-
-
-    /*-----------------Setup Entry screen-----------------*/
-    private void setupEntry(){
-        resume = false;
-        stopTimer();
-        entry_layout.setVisibility(View.VISIBLE);
-        game_layout.setVisibility(View.INVISIBLE);
-        pause_layout.setVisibility(View.INVISIBLE);
-        gameover_layout.setVisibility(View.INVISIBLE);
     }
 
 
     /*-----------------Setup Pause screen-----------------*/
     private void pauseGame(){
         if(resume) {
-            resume = false;
             stopTimer();
             disableGameBtns();
             pause_layout.setVisibility(View.VISIBLE);
@@ -325,15 +310,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*-----------------Setup GameOver screen-----------------*/
-    private void setupGameOver(){
-        resume = false;
+    /*-----------------Setup Entry screen-----------------*/
+    private void setupEntry(){
         stopTimer();
-        gameover_layout.setVisibility(View.VISIBLE);
-        gameover_layout.setVisibility(View.VISIBLE);
+        entry_layout.setVisibility(View.VISIBLE);
         game_layout.setVisibility(View.INVISIBLE);
         pause_layout.setVisibility(View.INVISIBLE);
-        gameover_score_label.setText(("SCORE: "+score));
+        gameover_layout.setVisibility(View.INVISIBLE);
+    }
+
+
+    /*-----------------Setup GameOver screen-----------------*/
+    private void setupGameOver(){
+        stopTimer();
+        disableGameBtns();
+        handler.postDelayed(()->{
+                gameover_layout.setVisibility(View.VISIBLE);
+                game_layout.setVisibility(View.INVISIBLE);
+                pause_layout.setVisibility(View.INVISIBLE);
+                gameover_score_label.setText(("SCORE: "+score));
+            }, GAMEOVER_DELAY);
     }
 
 }
