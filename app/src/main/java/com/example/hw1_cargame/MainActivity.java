@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         initVib();
         initPauseResumeBtn();
         initGameOverPlayBtn();
-
         setupEntry();
     }
 
@@ -158,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
         randomRow0();
         for (int i = 1; i < rows; i++)
             setRowInvisible(i);
-
         //Car
         car_col = cols/2;
         game_grid[rows-1][car_col].setImageResource(R.drawable.ic_car);
@@ -219,12 +217,10 @@ public class MainActivity extends AppCompatActivity {
         random_row0 = false;
         resume = true;
         delay = START_DELAY;
-
         initGrid();
         initHearts();
         initScore();
         initGameBtns();
-
         game_layout.setVisibility(View.VISIBLE);
         entry_layout.setVisibility(View.INVISIBLE);
         pause_layout.setVisibility(View.INVISIBLE);
@@ -233,9 +229,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void move(int direction){
         game_grid[rows-1][car_col].setVisibility(View.INVISIBLE);
-
         car_col = (car_col+cols+direction)%cols;
-
         if(game_grid[rows-1][car_col].getVisibility()==View.VISIBLE){
             performCollision();
         }
