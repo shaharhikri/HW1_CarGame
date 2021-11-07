@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import java.util.Objects;
 import java.util.Random;
@@ -276,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performCollision(){
+        Toast.makeText(MainActivity.this, "BOOM!", Toast.LENGTH_SHORT).show();
         game_grid[rows-1][car_col].setImageResource(R.drawable.ic_explosion);
         //vibrate
         vibrate(COLLISION_VIBE_TIME);
@@ -324,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupGameOver(){
         stopTimer();
         disableGameBtns();
+        Toast.makeText(MainActivity.this, "GAME OVER!", Toast.LENGTH_SHORT).show();
         handler.postDelayed(()->{
                 gameover_layout.setVisibility(View.VISIBLE);
                 game_layout.setVisibility(View.INVISIBLE);
