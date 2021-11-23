@@ -16,7 +16,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:scaleType="fitXY"
-            android:src="@drawable/game_background2" />
+            android:src="@drawable/game_background" />
 
         <TextView
             android:id="@+id/game_score_label"
@@ -77,27 +77,44 @@
 
                 <ImageView
                     android:id="@+id/game_rock00"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock01"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock02"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock03"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock04"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -109,28 +126,43 @@
 
                 <ImageView
                     android:id="@+id/game_rock10"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock11"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock12"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
+                <ImageView
+                    android:id="@+id/game_rock13"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock14"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
 
             </LinearLayout>
 
@@ -143,27 +175,44 @@
 
                 <ImageView
                     android:id="@+id/game_rock20"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock21"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock22"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock23"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock24"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -175,54 +224,250 @@
 
                 <ImageView
                     android:id="@+id/game_rock30"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock31"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
 
                 <ImageView
                     android:id="@+id/game_rock32"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock33"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock34"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/game_row4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/game_rock40"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock41"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock42"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock43"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock44"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/game_row5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/game_rock50"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock51"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock52"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock53"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock54"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/game_row6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/game_rock60"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock61"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock62"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock63"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock64"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/game_row7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/game_rock70"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock71"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock72"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock73"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
+                <ImageView
+                    android:id="@+id/game_rock74"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_rock" />
+
             </LinearLayout>
 
 
         </LinearLayout>
 
-
-        <ImageButton
-            android:id="@+id/game_btn_left"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/btn_background"
-            android:src="@drawable/ic_action_left" />
-
-        <ImageButton
-            android:id="@+id/game_btn_right"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/btn_background"
-            android:src="@drawable/ic_action_right" />
+        <FrameLayout
+            android:id="@+id/controls_frame"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true" />
 
         <ImageButton
             android:id="@+id/game_btn_pause"
@@ -235,52 +480,6 @@
 
             android:background="@drawable/pause_btn_background"
             android:src="@drawable/ic_action_pause" />
-
-    </RelativeLayout>
-
-
-    <!--ENTRY OVER PANEL-->
-    <RelativeLayout
-        android:id="@+id/entry_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-
-        <ImageView
-            android:id="@+id/entry_back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/entry_background" />
-
-        <TextView
-            android:id="@+id/entry_label"
-            android:layout_width="370dp"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
-            android:text="CAR GAME"
-            android:textColor="#e6f4ff  "
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <Button
-            android:id="@+id/entry_play_btn"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="300dp"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:text="play"
-            />
 
     </RelativeLayout>
 
@@ -319,68 +518,6 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:text="RESUME"
-            />
-
-    </RelativeLayout>
-
-
-    <!--GAME OVER PANEL-->
-    <RelativeLayout
-        android:id="@+id/gameover_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gameover_background"
-        android:visibility="invisible">
-
-        <ImageView
-            android:id="@+id/gameover_back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/gameover_background" />
-
-        <TextView
-            android:id="@+id/gameover_gameover_label"
-            android:layout_width="370dp"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
-            android:text="GAME OVER"
-            android:textColor="@color/white"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/gameover_score_label"
-            android:layout_width="370dp"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="140dp"
-            android:text="SCORE"
-            android:textColor="#dcb9df"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-
-        <Button
-            android:id="@+id/gameover_play_btn"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="250dp"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:text="play"
             />
 
     </RelativeLayout>
