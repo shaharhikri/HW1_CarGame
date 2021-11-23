@@ -20,6 +20,7 @@ public class Fregment_Accelometer extends Fragment_Controls {
     private Sensor accSensor;
     private AppCompatActivity activity;
     private SensorEventListener accSensorEventListener;
+    private final float NO_TILT_LIMIT = 1.8f; //NO_TILT_LIMIT higher -> lower sensor sensitivity
 
     public Fregment_Accelometer(){ }
 
@@ -33,10 +34,9 @@ public class Fregment_Accelometer extends Fragment_Controls {
             @Override
             public void onSensorChanged(SensorEvent event) {
                 float x = event.values[0];
-                float limit = 1.5f;
-                if(x<=-limit)
+                if(x<=-NO_TILT_LIMIT)
                     controllCallBack.moveRight();
-                else if(x>=limit)
+                else if(x>=NO_TILT_LIMIT)
                     controllCallBack.moveLeft();
             }
 

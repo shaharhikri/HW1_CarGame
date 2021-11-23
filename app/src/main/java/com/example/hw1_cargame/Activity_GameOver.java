@@ -24,7 +24,6 @@ public class Activity_GameOver extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Activity_GameOver", "onCreate() ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
 
@@ -55,7 +54,7 @@ public class Activity_GameOver extends AppCompatActivity {
     }
 
     private void initScoreLabel() {
-        int score = getIntent().getBundleExtra("Bundle").getInt(Activity_GameOver.SCORE_KEY, 0);
+        int score = getIntent().getBundleExtra("Bundle").getInt(Activity_GameOver.SCORE_KEY, -1);
         gameover_score_label.setText("SCORE: "+score);
     }
 

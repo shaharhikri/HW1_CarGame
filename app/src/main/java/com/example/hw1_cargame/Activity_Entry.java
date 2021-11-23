@@ -19,7 +19,7 @@ public class Activity_Entry extends AppCompatActivity {
 
     /*Entry fields*/
     private Button entry_play_btn;
-    private RelativeLayout entry_layout;
+    private Button entry_settings_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +30,29 @@ public class Activity_Entry extends AppCompatActivity {
         findViews();
         fixBackground();
         initEntryPlayBtn();
+        create_controlType_And_Speed_In_MSP_if_Doesnt_Exists();
     }
 
     private void findViews() {
-        //Entry
         entry_play_btn = findViewById(R.id.entry_play_btn);
-        entry_layout = findViewById(R.id.entry_layout);
+        entry_settings_button = findViewById(R.id.entry_settings_btn);
     }
 
     private void initEntryPlayBtn(){
         entry_play_btn.setOnClickListener(v -> {
-            startGame(Activity_Game.ControlsType.BUTTONS);
+            startGame();
+        });
+        entry_settings_button.setOnClickListener(v -> {
+            Intent myIntent = new Intent(this, Activity_Settings.class);
+            startActivity(myIntent);
         });
     }
 
-    private void startGame(Activity_Game.ControlsType control_type) {
+    private void startGame() {
         Intent myIntent = new Intent(this, Activity_Game.class);
-
-        Bundle bundle = new Bundle();
-        Log.d("pttt", "control_type.ordinal(): "+control_type.ordinal());
-        bundle.putInt(Activity_Game.CONTROL_TYPE_KEY, control_type.ordinal());
-
-        myIntent.putExtra("Bundle", bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putInt(Activity_Game.CONTROL_TYPE_KEY, control_type.ordinal());
+//        myIntent.putExtra("Bundle", bundle);
         startActivity(myIntent);
         finish();
     }
@@ -59,4 +60,18 @@ public class Activity_Entry extends AppCompatActivity {
     private void fixBackground(){
         Glide.with(this).load(R.drawable.entry_background).into((ImageView)findViewById(R.id.entry_back));
     }
+
+    private void create_controlType_And_Speed_In_MSP_if_Doesnt_Exists(){
+        String speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,"none");
+        String controlsType = MSP.getMe().getString(Activity_Game.CONTROL_TYPE_KEY,"none");
+        if(speed.compareTo(Activity_Game.LOW_VAL)!=0 && speed.compareTo(Activity_Game.HIGH_VAL)!=0)
+            MSP.getMe().putString(Activity_Game.SPEED_KEY, Activity_Game.LOW_VAL);
+        if(controlsType.compareTo(Activity_Game.BUTTONS_VAL)!=0 && controlsType.compareTo(Activity_Game.ACCELOMETER_VAL)!=0)
+            MSP.getMe().putString(Activity_Game.CONTROL_TYPE_KEY, Activity_Game.BUTTONS_VAL);
+//
+//        speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,"no");
+//        controlsType = MSP.getMe().getString(Activity_Game.CONTROL_TYPE_KEY,"no");
+//        Log.d("SHAHARMSP1", speed+" "+controlsType);
+    }
+
 }

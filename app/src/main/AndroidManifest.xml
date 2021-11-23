@@ -25,11 +25,16 @@
         <activity
             android:name=".Activity_Game"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity_GameOver"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity_Settings"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

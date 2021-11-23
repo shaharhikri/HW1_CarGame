@@ -30,8 +30,13 @@ import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
 
-    public static enum ControlsType {BUTTONS, ACCELOMETER};
+    public static final String ACCELOMETER_VAL = "ACCELOMETER_VAL";
+    public static final String BUTTONS_VAL = "BUTTONS_VAL";
     public static final String CONTROL_TYPE_KEY = "CONTROL_TYPE_KEY";
+
+    public static final String LOW_VAL = "LOW_VAL";
+    public static final String HIGH_VAL = "HIGH_VAL";
+    public static final String SPEED_KEY = "LOW_KEY";
 
     /*Game fields*/
     //Views
@@ -59,29 +64,31 @@ public class Activity_Game extends AppCompatActivity {
     private RelativeLayout game_layout;
     //Vars
     private int score;
-    final private int COLLISION_SCORE_SUB = 1000;
-    final private int COIN_SCORE_ADD = 1000;
-    final private int FORWARD_SCORE_ADD = 200;
+    private final int COLLISION_SCORE_SUB = 1000;
+    private final int COIN_SCORE_ADD = 1000;
+    private final int FORWARD_SCORE_ADD = 200;
     private int cols,rows;
     private int car_col;
     private Random rand;
     private boolean random_row0;
     //Vibrate vars
-    Vibrator vib;
-    final int COLLISION_VIBE_TIME=200;
-    final int COINPICKUP_VIBE_TIME=50;
-    final int GAME_BTN_VIBE_TIME=10;
+    private Vibrator vib;
+    private final int COLLISION_VIBE_TIME=200;
+    private final int COINPICKUP_VIBE_TIME=50;
+    private final int GAME_BTN_VIBE_TIME=10;
     //Sound
-    MediaPlayer coin_mp;
-    MediaPlayer colision_mp;
+    private MediaPlayer coin_mp;
+    private MediaPlayer colision_mp;
     //Timer vars
     private final Handler handler = new Handler();
-    private final int START_DELAY = 1000;
     private int delay;
-    final private int SPEEDUP_SCORE_STEP = 1000;
-    final private double DELAY_REDUCE_FACTOR = 0.98;
+    private int start_delay = 1000;
+    private final float LOW_SPEED_FACTOR = 1.5f;
+    private final float HIGH_SPEED_FACTOR = 0.75f;
+    private final int SPEEDUP_SCORE_STEP = 1000;
+    private final double DELAY_REDUCE_FACTOR = 0.98;
     private boolean resume;
-    final private Runnable forward_run = () -> {
+    private final Runnable forward_run = () -> {
         forwardGrid();
         if(resume)
             startTimer();
@@ -90,24 +97,23 @@ public class Activity_Game extends AppCompatActivity {
     /*Pause fields*/
     private Button pause_resume_btn;
     private RelativeLayout pause_layout;
-    final private View.OnClickListener pause_resume_btn_handler = v -> {
+    private final View.OnClickListener pause_resume_btn_handler = v -> {
         pause_layout.setVisibility(View.INVISIBLE);
         enableControls();
         initGamePausebtn();
         startTimer();
     };
-    int back_clicks_count = 0;
+    private int back_clicks_count = 0;
     private final Handler handler_back = new Handler();
+    private final int DOUBLE_CLICK_BACK_DELAY = 1000;
     /*Game Over*/
-    final private int GAMEOVER_DELAY = 2000;
+    private final int GAMEOVER_DELAY = 2000;
 
     /*-----------------Android time circle funtions-----------------*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_panel);
-//        Objects.requireNonNull(getSupportActionBar()).hide(); //Hide app header
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //ignore night mode
         fixBackground();
         findViews();
         initVibAndSound();
@@ -168,8 +174,9 @@ public class Activity_Game extends AppCompatActivity {
         game_grid[rows-1][car_col].setVisibility(View.VISIBLE);
     }
 
-    private void initGameControls(ControlsType controlsType){
-        if(controlsType==ControlsType.BUTTONS)
+    private void initGameControls(){
+        String controlsType = MSP.getMe().getString(Activity_Game.CONTROL_TYPE_KEY,Activity_Game.BUTTONS_VAL);
+        if(controlsType.compareTo(Activity_Game.BUTTONS_VAL)==0)
             fragmentControls = new Fregment_Buttons();
         else
             fragmentControls = new Fregment_Accelometer();
@@ -177,6 +184,15 @@ public class Activity_Game extends AppCompatActivity {
         fragmentControls.setActivity(this);
         fragmentControls.setControllCallBack(controllCallBack);
         getSupportFragmentManager().beginTransaction().add(R.id.controls_frame, fragmentControls).commit();
+    }
+
+    private void initGameSpeed(){
+        String speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,Activity_Game.LOW_VAL);
+        Log.d("SHAHARMSP555", "initGameSpeed: "+speed);
+        if(speed.compareTo(Activity_Game.LOW_VAL)==0)
+            start_delay = (int) ( LOW_SPEED_FACTOR * start_delay);
+        else
+            start_delay = (int) (HIGH_SPEED_FACTOR * start_delay);
     }
 
     private void enableControls(){
@@ -218,7 +234,7 @@ public class Activity_Game extends AppCompatActivity {
     /*-----------------Timer-----------------*/
     private void startTimer(){
         resume = true;
-        delay = (int) (START_DELAY *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
+        delay = (int) (start_delay *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
         handler.postDelayed(forward_run, delay);
     }
 
@@ -240,15 +256,12 @@ public class Activity_Game extends AppCompatActivity {
         cols = game_grid[0].length;
         rand = new Random();
         random_row0 = false;
-        delay = START_DELAY;
+        delay = start_delay;
         initGrid();
         initHearts();
         initScore();
-
-        int ctype_index = getIntent().getBundleExtra("Bundle").getInt(Activity_Game.CONTROL_TYPE_KEY, 0);
-        ControlsType ctype = ControlsType.values()[ctype_index];
-//        Log.d("pttt", "ctype: "+ctype+"  ctype_index: "+ctype_index);
-        initGameControls(ctype);
+        initGameSpeed();
+        initGameControls();
         initGamePausebtn();
         game_layout.setVisibility(View.VISIBLE);
         pause_layout.setVisibility(View.INVISIBLE);
@@ -393,7 +406,7 @@ public class Activity_Game extends AppCompatActivity {
             if(back_clicks_count==0){
                 handler_back.postDelayed(() -> {
                     back_clicks_count = 0;
-                }, 1000);
+                }, DOUBLE_CLICK_BACK_DELAY);
                 Toast.makeText(Activity_Game.this, "Push 'back' again for EXIT.", Toast.LENGTH_SHORT).show();
                 back_clicks_count++;
             }
@@ -409,7 +422,6 @@ public class Activity_Game extends AppCompatActivity {
         stopTimer();
         disableGameControls();
         disableGamePausebtn();
-        Log.d("Activity_Game", "setupGameOver() ");
         handler.postDelayed(()->{
             Bundle bundle = getIntent().getBundleExtra("Bundle");
             bundle.putInt(Activity_GameOver.SCORE_KEY, score);
