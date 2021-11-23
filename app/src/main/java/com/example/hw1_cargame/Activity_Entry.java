@@ -50,9 +50,6 @@ public class Activity_Entry extends AppCompatActivity {
 
     private void startGame() {
         Intent myIntent = new Intent(this, Activity_Game.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putInt(Activity_Game.CONTROL_TYPE_KEY, control_type.ordinal());
-//        myIntent.putExtra("Bundle", bundle);
         startActivity(myIntent);
         finish();
     }

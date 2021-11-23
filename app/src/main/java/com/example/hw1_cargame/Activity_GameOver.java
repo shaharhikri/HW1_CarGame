@@ -26,13 +26,10 @@ public class Activity_GameOver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
-
         fixBackground();
         findViews();
         initGameOverPlayBtn();
         initScoreLabel();
-
-
     }
 
     //Prevent errors in old phones
@@ -41,7 +38,6 @@ public class Activity_GameOver extends AppCompatActivity {
     }
 
     private void findViews() {
-        //GameOver
         gameover_play_btn = findViewById(R.id.gameover_play_btn);
         gameover_layout = findViewById(R.id.gameover_layout);
         gameover_score_label = findViewById(R.id.gameover_score_label);

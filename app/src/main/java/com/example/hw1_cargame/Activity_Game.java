@@ -423,7 +423,7 @@ public class Activity_Game extends AppCompatActivity {
         disableGameControls();
         disableGamePausebtn();
         handler.postDelayed(()->{
-            Bundle bundle = getIntent().getBundleExtra("Bundle");
+            Bundle bundle = new Bundle();
             bundle.putInt(Activity_GameOver.SCORE_KEY, score);
             Intent myIntent = new Intent(this, Activity_GameOver.class);
             myIntent.putExtra("Bundle", bundle);

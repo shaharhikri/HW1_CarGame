@@ -81,6 +81,12 @@ public class Activity_Settings extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        updateMSP();
+    }
+
     private void updateMSP() {
         MSP.getMe().putString(Activity_Game.SPEED_KEY, speed);
         MSP.getMe().putString(Activity_Game.CONTROL_TYPE_KEY, controlsType);
