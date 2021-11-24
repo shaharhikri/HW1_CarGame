@@ -17,7 +17,6 @@ public class Activity_Settings extends AppCompatActivity {
 
     private RadioGroup rb_controls;
     private RadioGroup rb_speed;
-
     private Button exitBtn;
 
     @Override

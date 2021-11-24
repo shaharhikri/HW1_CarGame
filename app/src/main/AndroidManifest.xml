@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hw1_cargame">
+    package="com.example.hw1_cargame" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".App"
@@ -11,11 +14,15 @@
         android:label="Car Game"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/Theme.HW1_CarGame">
+        android:theme="@style/Theme.HW1_CarGame" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".Activity_Entry"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,9 +39,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity_Settings"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".Activity_Scores"
+            android:exported="true" />
     </application>
 
 </manifest>

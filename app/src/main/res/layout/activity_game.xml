@@ -77,7 +77,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock00"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -85,7 +85,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock01"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -93,7 +93,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock02"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -101,7 +101,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock03"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -109,7 +109,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock04"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -126,7 +126,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock10"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -134,7 +134,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock11"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -142,7 +142,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock12"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -150,7 +150,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock13"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -158,7 +158,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock14"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -175,7 +175,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock20"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -183,7 +183,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock21"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -191,7 +191,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock22"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -199,7 +199,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock23"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -207,7 +207,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock24"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -224,7 +224,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock30"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -232,7 +232,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock31"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -240,7 +240,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock32"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -248,7 +248,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock33"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -256,7 +256,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock34"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -273,7 +273,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock40"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -281,7 +281,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock41"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -289,7 +289,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock42"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -297,7 +297,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock43"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -305,7 +305,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock44"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -322,7 +322,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock50"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -330,7 +330,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock51"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -338,7 +338,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock52"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -346,7 +346,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock53"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -354,7 +354,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock54"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -371,7 +371,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock60"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -379,7 +379,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock61"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -387,7 +387,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock62"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -395,7 +395,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock63"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -403,7 +403,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock64"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -420,7 +420,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock70"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -428,7 +428,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock71"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -436,7 +436,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock72"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -444,7 +444,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock73"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
@@ -452,7 +452,7 @@
 
                 <ImageView
                     android:id="@+id/game_rock74"
-                    android:layout_width="55dp"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"

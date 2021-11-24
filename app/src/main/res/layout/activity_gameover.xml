@@ -53,9 +53,31 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="250dp"
-        android:textSize="40sp"
-        android:textStyle="bold"
         android:text="play"
-        />
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/gameover_menu_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="15dp"
+        android:text="Menu" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/gameover_scores_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="15dp"
+        android:text="Scores" />
+
+<!--    android:background="#ff8080"-->
+<!--    app:backgroundTint="#ff8080"-->
 
 </RelativeLayout>

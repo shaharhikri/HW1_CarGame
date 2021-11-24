@@ -1,7 +1,7 @@
 package com.example.hw1_cargame;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
+
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -20,12 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.hw1_cargame.Control_Fragments.ControllCallBack;
-import com.example.hw1_cargame.Control_Fragments.Fragment_Controls;
-import com.example.hw1_cargame.Control_Fragments.Fregment_Accelometer;
-import com.example.hw1_cargame.Control_Fragments.Fregment_Buttons;
+import com.example.hw1_cargame.control_fragments.CallBack_Controll;
+import com.example.hw1_cargame.control_fragments.Fragment_Controls;
+import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;
+import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
@@ -43,7 +42,7 @@ public class Activity_Game extends AppCompatActivity {
     private ImageView[][] game_grid;
     private ImageView[] game_hearts;
     private Fragment_Controls fragmentControls; // private ImageButton game_left_btn, game_right_btn;
-    private ControllCallBack controllCallBack = new ControllCallBack() {
+    private CallBack_Controll controllCallBack = new CallBack_Controll() {
 
         @Override
         public void moveLeft() {
@@ -113,7 +112,7 @@ public class Activity_Game extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_panel);
+        setContentView(R.layout.activity_game);
         fixBackground();
         findViews();
         initVibAndSound();
@@ -158,7 +157,6 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    /*-----------------INITS-----------------*/
     //Prevent errors in old phones
     private void fixBackground(){
         Glide.with(this).load(R.drawable.game_background).into((ImageView)findViewById(R.id.game_back));

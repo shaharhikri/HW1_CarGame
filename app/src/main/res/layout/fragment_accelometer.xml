@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/entry_label"
+        android:layout_width="365dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="TILT THE PHONE TO MOVE"
+        android:textColor="#e6f4ff"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_tilt"></ImageView>
+
+</RelativeLayout>

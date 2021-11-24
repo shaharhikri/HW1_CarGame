@@ -8,14 +8,17 @@
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/btn_background.xml" value="0.2453125" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/ic_heart.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/pause_btn_background.xml" value="0.15493421052631579" />
-        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/accelometer.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/accelometer.xml" value="0.25" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_entry.xml" value="0.23125" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_game_over.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_gameover.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_scores.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_settings.xml" value="0.2140625" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/buttons.xml" value="0.10733695652173914" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/entry_layout.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/fragment_googlemap.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/fragment_scorelist.xml" value="0.25" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/game_layout.xml" value="0.1875" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/game_panel.xml" value="0.25" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/gameover_layout.xml" value="0.22916666666666666" />

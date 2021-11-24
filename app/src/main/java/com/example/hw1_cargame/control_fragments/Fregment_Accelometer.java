@@ -1,4 +1,4 @@
-package com.example.hw1_cargame.Control_Fragments;
+package com.example.hw1_cargame.control_fragments;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.hw1_cargame.R;
 
 public class Fregment_Accelometer extends Fragment_Controls {
-    private ControllCallBack controllCallBack;
+    private CallBack_Controll controllCallBack;
     private SensorManager sensorManager;
     private Sensor accSensor;
     private AppCompatActivity activity;
@@ -26,7 +26,7 @@ public class Fregment_Accelometer extends Fragment_Controls {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.accelometer, container, false);
+        View view = inflater.inflate(R.layout.fragment_accelometer, container, false);
         sensorManager = (SensorManager) (activity.getSystemService(Context.SENSOR_SERVICE));
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -59,7 +59,7 @@ public class Fregment_Accelometer extends Fragment_Controls {
     }
 
     @Override
-    public void setControllCallBack(ControllCallBack cb){
+    public void setControllCallBack(CallBack_Controll cb){
         controllCallBack = cb;
     }
 

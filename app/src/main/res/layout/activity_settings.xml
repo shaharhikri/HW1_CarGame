@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_Entry">
+    tools:context=".Activity_Settings">
 
     <ImageView
         android:id="@+id/settings_back"
@@ -111,10 +111,10 @@
         android:id="@+id/settings_exit_btn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:text="X"
         android:textColor="#FF3939"
         android:textSize="35sp"

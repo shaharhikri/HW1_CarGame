@@ -1,4 +1,4 @@
-package com.example.hw1_cargame.Control_Fragments;
+package com.example.hw1_cargame.control_fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,9 +13,9 @@ import com.example.hw1_cargame.R;
 public class Fregment_Buttons extends Fragment_Controls {
 
     private ImageButton game_left_btn, game_right_btn;
-    private ControllCallBack controllCallBack;
-    private ControllCallBack enabledCallBack;
-    private ControllCallBack disabledCallBack = new ControllCallBack() {
+    private CallBack_Controll controllCallBack;
+    private CallBack_Controll enabledCallBack;
+    private CallBack_Controll disabledCallBack = new CallBack_Controll() {
         @Override
         public void moveLeft() { }
         @Override
@@ -27,7 +27,7 @@ public class Fregment_Buttons extends Fragment_Controls {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.buttons, container, false);
+        View view = inflater.inflate(R.layout.fragment_buttons, container, false);
         findViews(view);
         initViews();
         enable();
@@ -45,7 +45,7 @@ public class Fregment_Buttons extends Fragment_Controls {
     }
 
     @Override
-    public void setControllCallBack(ControllCallBack cb){
+    public void setControllCallBack(CallBack_Controll cb){
         enabledCallBack = cb;
     }
 
