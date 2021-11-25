@@ -24,8 +24,6 @@ public class Activity_Entry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
-//        Objects.requireNonNull(getSupportActionBar()).hide(); //Hide app header
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //ignore night mode
         findViews();
         fixBackground();
         initEntryPlayBtn();
@@ -38,6 +36,7 @@ public class Activity_Entry extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
     }
 
+    //fix background bitmap - prevents errors in old phones
     private void fixBackground(){
         Glide.with(this).load(R.drawable.entry_background).into((ImageView)findViewById(R.id.entry_back));
     }

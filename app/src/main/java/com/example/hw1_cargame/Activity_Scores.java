@@ -56,27 +56,25 @@ public class Activity_Scores extends AppCompatActivity {
         initViews();
     }
 
-    //Prevent errors in old phones
+    //fix background bitmap - prevents errors in old phones
     private void fixBackground(){
         Glide.with(this).load(R.drawable.settings_background).into((ImageView)findViewById(R.id.scores_back));
     }
 
     private void findViews() {
-//        scores_data_label = findViewById(R.id.scores_data_label);
-
         exitBtn = findViewById(R.id.scores_exit_btn);
     }
 
     private void initScoresDBfromMSP(){
-        String scoresDB_json = MSP.getMe().getString(ScoresDB.SCORES_DB_KEY,"none");
-        if(scoresDB_json.compareTo("none")==0)
-            scoresDB = new ScoresDB();
-        else
-            scoresDB = new Gson().fromJson(scoresDB_json, ScoresDB.class);
+
+//        String scoresDB_json = MSP.getMe().getString(ScoresDB.SCORES_DB_KEY,"none");
+//        if(scoresDB_json.compareTo("none")==0)
+//            scoresDB = new ScoresDB();
+//        else
+//            scoresDB = new Gson().fromJson(scoresDB_json, ScoresDB.class);
     }
 
     private void initViews(){
-//        scores_data_label.setText(scoresDB.toString());
         exitBtn.setOnClickListener( v -> {
             finish();
         });

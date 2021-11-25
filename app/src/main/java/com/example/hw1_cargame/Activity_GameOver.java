@@ -49,7 +49,10 @@ public class Activity_GameOver extends AppCompatActivity {
     private MaterialButton gameover_scores_btn;
     private TextView gameover_score_label;
     private int score; //Score of last game.
-    FusedLocationProviderClient fusedLocationClient;
+    private FusedLocationProviderClient fusedLocationClient;
+    private static float DEFAULT_LON = 0;
+    private static float DEFAULT_LAT = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,7 @@ public class Activity_GameOver extends AppCompatActivity {
         addScoreToMSP();
     }
 
-    //Prevent errors in old phones
+    //fix background bitmap - prevents errors in old phones
     private void fixBackground(){
         Glide.with(this).load(R.drawable.gameover_background).into((ImageView)findViewById(R.id.gameover_back));
     }
@@ -109,22 +112,17 @@ public class Activity_GameOver extends AppCompatActivity {
             scoresDB = new ScoresDB();
         else
             scoresDB = new Gson().fromJson(scoresDB_json, ScoresDB.class);
-        //UPDATE SCOREDB
-
-        ScoreRecord r = new ScoreRecord();
-        r.setScore(score);
-        r.setDate(getCurrentFormatedDate());
-        getLocation((lon, lat)->{
-            r.setLat(lat); r.setLon(lon); //TODO: CHANGE TO LOCATION
+        Callback_EndGetLocation end_of_addScoreToMSP = (lon, lat)->{
+            //Create NEW SCORERECORD
+            ScoreRecord r = new ScoreRecord().setScore(score).setDate(getCurrentFormatedDate()).setLat(lat).setLon(lon);
             Log.d("MyLocation", "latitude: "+lat+", longitude: "+lon);
-
+            //UPDATE SCOREDB
             insertToTopTen(r,scoresDB.getRecords());
-
-            //CONVERT TO JSON
+            //SAVE SCOREDB AS STRING IN MSP
             String json = new Gson().toJson(scoresDB);
-            //SAVE IN MSP AS STRING
             MSP.getMe().putString(ScoresDB.SCORES_DB_KEY, json);
-        });
+        };
+        getLocation(end_of_addScoreToMSP);
     }
 
     private void insertToTopTen(ScoreRecord r, ArrayList<ScoreRecord> msp_records){
@@ -169,34 +167,26 @@ public class Activity_GameOver extends AppCompatActivity {
         return currentTime;
     }
 
-    private void getLocation(addScoreToMSP_FinishAddScoreToMSP cb){
+    private void getLocation(Callback_EndGetLocation cb_doItLater){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
                     Location location = task.getResult();
-                    if(location!=null) {
-                        Geocoder geocoder = new Geocoder(Activity_GameOver.this, Locale.getDefault());
-                        try {
-                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                            double lon = addresses.get(0).getLongitude();
-                            double lat = addresses.get(0).getLatitude();
-                            Log.d("ShaharCll", "onComplete: do");
-                            cb.doItLater(lon, lat); //onComplete needs a callback - because it's an async method!
-                            Log.d("ShaharCll", "onComplete: did");
-                        }
-                        catch(IOException e){
-                            cb.doItLater(0, 0); //onComplete needs a callback - because it's an async method!
-                            e.printStackTrace();
-                        }
-                    }
+                    if(location!=null)
+                        cb_doItLater.afterLocationExtraction(location.getLongitude(), location.getLatitude());
+                    else
+                        cb_doItLater.afterLocationExtraction(DEFAULT_LON, DEFAULT_LAT);
                 }
             });
         }
+        else {
+            cb_doItLater.afterLocationExtraction(DEFAULT_LON, DEFAULT_LAT);
+        }
     }
 
-    private static interface addScoreToMSP_FinishAddScoreToMSP{
-        public void doItLater(double lon,  double lat);
+    private static interface Callback_EndGetLocation{
+        public void afterLocationExtraction(double lon,  double lat);
     }
 }

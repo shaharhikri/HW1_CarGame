@@ -28,7 +28,7 @@ import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
-
+    /*For bandle from past activities*/
     public static final String ACCELOMETER_VAL = "ACCELOMETER_VAL";
     public static final String BUTTONS_VAL = "BUTTONS_VAL";
     public static final String CONTROL_TYPE_KEY = "CONTROL_TYPE_KEY";
@@ -41,9 +41,11 @@ public class Activity_Game extends AppCompatActivity {
     //Views
     private ImageView[][] game_grid;
     private ImageView[] game_hearts;
+    private ImageButton game_btn_pause;
+    private TextView game_score_label;
+    private RelativeLayout game_layout;
     private Fragment_Controls fragmentControls; // private ImageButton game_left_btn, game_right_btn;
     private CallBack_Controll controllCallBack = new CallBack_Controll() {
-
         @Override
         public void moveLeft() {
             if(car_col>0)
@@ -58,34 +60,31 @@ public class Activity_Game extends AppCompatActivity {
             vibrate(GAME_BTN_VIBE_TIME);
         }
     };
-    private ImageButton game_btn_pause;
-    private TextView game_score_label;
-    private RelativeLayout game_layout;
     //Vars
     private int score;
-    private final int COLLISION_SCORE_SUB = 1000;
-    private final int COIN_SCORE_ADD = 1000;
-    private final int FORWARD_SCORE_ADD = 200;
-    private int cols,rows;
-    private int car_col;
+    private final int COLLISION_SCORE_SUB = 1000; //How much scores will be reduced by a collision with a rock
+    private final int COIN_SCORE_ADD = 1000; //How much scores will be increased by a coin picking up
+    private final int FORWARD_SCORE_ADD = 200; //How much scores will be increased in the progress of the track in one stage
+    private int cols,rows; //Num of cols&rows
+    private int car_col; //Car current position
     private Random rand;
     private boolean random_row0;
     //Vibrate vars
     private Vibrator vib;
-    private final int COLLISION_VIBE_TIME=200;
-    private final int COINPICKUP_VIBE_TIME=50;
-    private final int GAME_BTN_VIBE_TIME=10;
+    private final int COLLISION_VIBE_TIME=200; //Vibrate time (in millisec) in collision.
+    private final int COINPICKUP_VIBE_TIME=50; //Vibrate time (in millisec) in pick up a coin.
+    private final int GAME_BTN_VIBE_TIME=10; //Vibrate time (in millisec) in push game button (right\left\pause in game mode).
     //Sound
-    private MediaPlayer coin_mp;
-    private MediaPlayer colision_mp;
+    private MediaPlayer coin_mp; //plays coin pick up sound.
+    private MediaPlayer colision_mp; //plays rock collision sound.
     //Timer vars
     private final Handler handler = new Handler();
     private int delay;
-    private int start_delay = 1000;
-    private final float LOW_SPEED_FACTOR = 1.5f;
-    private final float HIGH_SPEED_FACTOR = 0.75f;
+    private int start_delay = 1000; //starting delay
+    private final float LOW_SPEED_FACTOR = 1.5f;  //start_delay multiplies with this if user chose in low speed
+    private final float HIGH_SPEED_FACTOR = 0.5f; //start_delay multiplies with this if user chose in high speed
     private final int SPEEDUP_SCORE_STEP = 1000;
-    private final double DELAY_REDUCE_FACTOR = 0.98;
+    private final double DELAY_REDUCE_FACTOR = 0.97; //delay multiplies with this (reduces) every 'SPEEDUP_SCORE_STEP' scores.
     private boolean resume;
     private final Runnable forward_run = () -> {
         forwardGrid();
@@ -99,14 +98,16 @@ public class Activity_Game extends AppCompatActivity {
     private final View.OnClickListener pause_resume_btn_handler = v -> {
         pause_layout.setVisibility(View.INVISIBLE);
         enableControls();
-        initGamePausebtn();
+        enablePausebtn();
         startTimer();
     };
     private int back_clicks_count = 0;
     private final Handler handler_back = new Handler();
     private final int DOUBLE_CLICK_BACK_DELAY = 1000;
+
     /*Game Over*/
     private final int GAMEOVER_DELAY = 2000;
+
 
     /*-----------------Android time circle funtions-----------------*/
     @Override
@@ -115,10 +116,28 @@ public class Activity_Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         fixBackground();
         findViews();
-        initVibAndSound();
-        initPauseResumeBtn();
-        setupGame();
+
+        rows = game_grid.length;
+        cols = game_grid[0].length;
+        rand = new Random();
+        random_row0 = false;
+        delay = start_delay;
+        vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        coin_mp = MediaPlayer.create(this, R.raw.coin);
+        colision_mp = MediaPlayer.create(this, R.raw.crash);
+
+        initViews();
+
+        enablePausebtn();
+        game_layout.setVisibility(View.VISIBLE);
+        pause_layout.setVisibility(View.INVISIBLE);
         startTimer();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        back_clicks_count = 0;
     }
 
     @Override
@@ -127,7 +146,7 @@ public class Activity_Game extends AppCompatActivity {
         pauseGame();
     }
 
-    /*-----------------Find all views-----------------*/
+    //Find all views
     private void findViews() {
         //Game
         game_grid = new ImageView[][]{
@@ -156,23 +175,58 @@ public class Activity_Game extends AppCompatActivity {
         pause_layout = findViewById(R.id.pause_layout);
     }
 
-
-    //Prevent errors in old phones
+    //fix background bitmap - prevents errors in old phones
     private void fixBackground(){
         Glide.with(this).load(R.drawable.game_background).into((ImageView)findViewById(R.id.game_back));
     }
 
-    private void initGrid(){
+
+    /*-----------------Timer-----------------*/
+    //Continues the game.
+    private void startTimer(){
+        resume = true;
+        delay = (int) (start_delay *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
+        handler.postDelayed(forward_run, delay);
+    }
+
+    //Freezes the game.
+    private void stopTimer(){
+        resume = false;
+        handler.removeCallbacks(forward_run);
+    }
+
+
+    /*-----------------Setup and Run Game-----------------*/
+    //Init Views
+    private void initViews(){
+        //init pause_resume_btn
+        pause_resume_btn.setOnClickListener(pause_resume_btn_handler);
+
+        //init Grid
         randomRow0();
         for (int i = 1; i < rows; i++)
             setRowInvisible(i);
-        //Car
         car_col = cols/2;
         game_grid[rows-1][car_col].setImageResource(R.drawable.ic_car);
         game_grid[rows-1][car_col].setVisibility(View.VISIBLE);
-    }
 
-    private void initGameControls(){
+        //init Hearts
+        for (ImageView heart : game_hearts)
+            heart.setVisibility(View.VISIBLE);
+
+        //init Score
+        score = 0;
+        addScore(0);
+
+        //init Game Speed
+        String speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,Activity_Game.LOW_VAL);
+        Log.d("SHAHARMSP555", "initGameSpeed: "+speed);
+        if(speed.compareTo(Activity_Game.LOW_VAL)==0)
+            start_delay = (int) ( LOW_SPEED_FACTOR * start_delay);
+        else
+            start_delay = (int) (HIGH_SPEED_FACTOR * start_delay);
+
+        //init Game Controls
         String controlsType = MSP.getMe().getString(Activity_Game.CONTROL_TYPE_KEY,Activity_Game.BUTTONS_VAL);
         if(controlsType.compareTo(Activity_Game.BUTTONS_VAL)==0)
             fragmentControls = new Fregment_Buttons();
@@ -184,87 +238,7 @@ public class Activity_Game extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.controls_frame, fragmentControls).commit();
     }
 
-    private void initGameSpeed(){
-        String speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,Activity_Game.LOW_VAL);
-        Log.d("SHAHARMSP555", "initGameSpeed: "+speed);
-        if(speed.compareTo(Activity_Game.LOW_VAL)==0)
-            start_delay = (int) ( LOW_SPEED_FACTOR * start_delay);
-        else
-            start_delay = (int) (HIGH_SPEED_FACTOR * start_delay);
-    }
-
-    private void enableControls(){
-        fragmentControls.enable();
-    }
-
-    private void disableGameControls(){
-        fragmentControls.disable();
-    }
-
-    private void initGamePausebtn() {
-        game_btn_pause.setOnClickListener(v -> {
-            pauseGame();
-            vibrate(GAME_BTN_VIBE_TIME);
-        });
-    }
-
-    private void initScore(){
-        score = 0;
-        addScore(0);
-    }
-
-    private void initHearts(){
-        for (ImageView heart : game_hearts)
-            heart.setVisibility(View.VISIBLE);
-    }
-
-    private void initVibAndSound(){
-        vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        coin_mp = MediaPlayer.create(this, R.raw.coin);
-        colision_mp = MediaPlayer.create(this, R.raw.crash);
-    }
-
-    private void initPauseResumeBtn(){
-        pause_resume_btn.setOnClickListener(pause_resume_btn_handler);
-    }
-
-
-    /*-----------------Timer-----------------*/
-    private void startTimer(){
-        resume = true;
-        delay = (int) (start_delay *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
-        handler.postDelayed(forward_run, delay);
-    }
-
-    private void stopTimer(){
-        resume = false;
-        handler.removeCallbacks(forward_run);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        back_clicks_count = 0;
-    }
-
-
-    /*-----------------Setup and Run Game-----------------*/
-    private void setupGame(){
-        rows = game_grid.length;
-        cols = game_grid[0].length;
-        rand = new Random();
-        random_row0 = false;
-        delay = start_delay;
-        initGrid();
-        initHearts();
-        initScore();
-        initGameSpeed();
-        initGameControls();
-        initGamePausebtn();
-        game_layout.setVisibility(View.VISIBLE);
-        pause_layout.setVisibility(View.INVISIBLE);
-    }
-
+    //Move car left(negative direction) or right(positive direction).
     private void move(int direction){
         game_grid[rows-1][car_col].setVisibility(View.INVISIBLE);
         car_col = (car_col+cols+direction)%cols;
@@ -294,6 +268,7 @@ public class Activity_Game extends AppCompatActivity {
         game_score_label.setText((""+score));
     }
 
+    //Move game_grid forward.
     private void forwardGrid(){
         for (int i = rows-1; i>0; i--)
             copyRow(i-1,i);
@@ -316,6 +291,7 @@ public class Activity_Game extends AppCompatActivity {
         }
     }
 
+    //Copy row data from from_row to to_row in game_grid.
     private void copyRow(int from_row, int to_row){
         for (int j = 0; j < cols; j++) {
             game_grid[to_row][j].setVisibility(game_grid[from_row][j].getVisibility());
@@ -328,6 +304,7 @@ public class Activity_Game extends AppCompatActivity {
         }
     }
 
+    //Randomize row 0 (car row) in game_grid.
     private void randomRow0(){
         setRowInvisible(0);
         int rand_col = rand.nextInt(cols);
@@ -348,6 +325,7 @@ public class Activity_Game extends AppCompatActivity {
             game_grid[row][j].setVisibility(View.INVISIBLE);
     }
 
+    //What happens when the car collides with a rock.
     private void performCollision(){
         Toast.makeText(Activity_Game.this, "BOOM!", Toast.LENGTH_SHORT).show();
         game_grid[rows-1][car_col].setImageResource(R.drawable.ic_explosion);
@@ -369,6 +347,7 @@ public class Activity_Game extends AppCompatActivity {
             gameOver();
     }
 
+    //What happens when the car meets a coin.
     private void performCoinPickUp(){
         Toast.makeText(Activity_Game.this, "Coin!", Toast.LENGTH_SHORT).show();
         game_grid[rows-1][car_col].setImageResource(R.drawable.ic_coinpickup);
@@ -381,20 +360,29 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    /*-----------------Setup Pause screen-----------------*/
-    private void pauseGame(){
-        if(resume) {
-            stopTimer();
-            disableGameControls();
-            disableGamePausebtn();
-            pause_layout.setVisibility(View.VISIBLE);
-        }
+    /*-----------------Buttons and Controlls-----------------*/
+    private void enableControls(){
+        fragmentControls.enable();
     }
 
-    private void disableGamePausebtn(){
+    private void disableControls(){
+        fragmentControls.disable();
+    }
+
+    private void enablePausebtn() {
+        game_btn_pause.setOnClickListener(v -> {
+            pauseGame();
+            vibrate(GAME_BTN_VIBE_TIME);
+        });
+    }
+
+    private void disablePausebtn(){
         game_btn_pause.setOnClickListener(null);
     }
 
+    //What happens when 'back' android integrated button is pushed.
+    //1 push will bring user to 'pause' screen.
+    //another double click will close the app.
     @Override
     public void onBackPressed() {
         if(resume){
@@ -415,11 +403,22 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    /*-----------------End Game (Game Over)-----------------*/
+    /*-----------------Pause\GameOver-----------------*/
+    //Stop game and show pause screen(layout).
+    private void pauseGame(){
+        if(resume) {
+            stopTimer();
+            disableControls();
+            disablePausebtn();
+            pause_layout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    //What happens when user loses.
     private void gameOver(){
         stopTimer();
-        disableGameControls();
-        disableGamePausebtn();
+        disableControls();
+        disablePausebtn();
         handler.postDelayed(()->{
             Bundle bundle = new Bundle();
             bundle.putInt(Activity_GameOver.SCORE_KEY, score);

@@ -12,32 +12,36 @@ public class ScoreRecord {
         return score;
     }
 
-    public void setScore(int score) {
+    public ScoreRecord setScore(int score) {
         this.score = score;
+        return this;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public ScoreRecord setDate(String date) {
         this.date = date;
+        return this;
     }
 
     public double getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public ScoreRecord setLat(double lat) {
         this.lat = lat;
+        return this;
     }
 
     public double getLon() {
         return lon;
     }
 
-    public void setLon(double lon) {
+    public ScoreRecord setLon(double lon) {
         this.lon = lon;
+        return this;
     }
 
     @Override
