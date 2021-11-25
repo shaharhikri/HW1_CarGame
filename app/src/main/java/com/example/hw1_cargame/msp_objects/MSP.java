@@ -27,14 +27,6 @@ public class MSP {
         return me;
     }
 
-
-
-
-
-
-
-
-
     public void putDouble(String KEY, double defValue) {
         putString(KEY, String.valueOf(defValue));
     }
