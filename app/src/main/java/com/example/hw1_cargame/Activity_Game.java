@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,15 +17,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.hw1_cargame.control_fragments.CallBack_Controll;
 import com.example.hw1_cargame.control_fragments.Fragment_Controls;
 import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;
 import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
-import com.example.hw1_cargame.msp_objects.MSP;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
-
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
@@ -39,7 +35,7 @@ public class Activity_Game extends AppCompatActivity {
     private TextView game_score_label;
     private RelativeLayout game_layout;
     private Fragment_Controls fragmentControls; // private ImageButton game_left_btn, game_right_btn;
-    private CallBack_Controll controllCallBack = new CallBack_Controll() {
+    private final CallBack_Controll controllCallBack = new CallBack_Controll() {
         @Override
         public void moveLeft() {
             if(car_col>0)
@@ -56,7 +52,6 @@ public class Activity_Game extends AppCompatActivity {
     };
     //Vars
     private int score;
-    private final int COLLISION_SCORE_SUB = 1000; //How much scores will be reduced by a collision with a rock
     private final int COIN_SCORE_ADD = 1000; //How much scores will be increased by a coin picking up
     private final int FORWARD_SCORE_ADD = 200; //How much scores will be increased in the progress of the track in one stage
     private int cols,rows; //Num of cols&rows
@@ -122,7 +117,6 @@ public class Activity_Game extends AppCompatActivity {
         bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
         speed_setting = bundle.getString(MSP_Manager.SPEED_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.SPEED_KEY,MSP_Manager.LOW_VAL);
         controlsType_setting = bundle.getString(MSP_Manager.CONTROL_TYPE_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.CONTROL_TYPE_KEY,MSP_Manager.BUTTONS_VAL);
-        Log.d("ShaharNullCheck", "Activity_Game::onCreate: sp="+speed_setting+" con="+controlsType_setting);
 
         initViews();
         enablePausebtn();
@@ -238,7 +232,7 @@ public class Activity_Game extends AppCompatActivity {
         car_col = (car_col+cols+direction)%cols;
         if(game_grid[rows-1][car_col].getVisibility()==View.VISIBLE){
             Integer tag = (Integer)(game_grid[rows-1][car_col].getTag());
-            if(tag!=null && tag.intValue()==(int)R.drawable.ic_rock)
+            if(tag!=null && tag == R.drawable.ic_rock)
                 performCollision();
             else
                 performCoinPickUp();
@@ -274,7 +268,7 @@ public class Activity_Game extends AppCompatActivity {
 
         if(game_grid[rows-1][car_col].getVisibility()==View.VISIBLE){
             Integer tag = (Integer)(game_grid[rows-1][car_col].getTag());
-            if(tag!=null && tag.intValue()==(int)R.drawable.ic_rock)
+            if(tag!=null && tag == R.drawable.ic_rock)
                 performCollision();
             else
                 performCoinPickUp();
@@ -291,7 +285,7 @@ public class Activity_Game extends AppCompatActivity {
             game_grid[to_row][j].setVisibility(game_grid[from_row][j].getVisibility());
             Integer tag = (Integer)(game_grid[from_row][j].getTag());
             game_grid[to_row][j].setTag(tag);
-            if(tag!=null && tag.intValue()==(int)R.drawable.ic_coin)
+            if(tag!=null && tag == R.drawable.ic_coin)
                 game_grid[to_row][j].setImageResource(R.drawable.ic_coin);
             else
                 game_grid[to_row][j].setImageResource(R.drawable.ic_rock);
@@ -302,15 +296,15 @@ public class Activity_Game extends AppCompatActivity {
     private void randomRow0(){
         setRowInvisible(0);
         int rand_col = rand.nextInt(cols);
-        boolean is_coin = rand.nextInt(10)>6? true: false;
+        boolean is_coin = rand.nextInt(10) > 6;
         game_grid[0][rand_col].setVisibility(View.VISIBLE);
         if(is_coin) {
             game_grid[0][rand_col].setImageResource(R.drawable.ic_coin);
-            game_grid[0][rand_col].setTag((Integer) R.drawable.ic_coin);
+            game_grid[0][rand_col].setTag(R.drawable.ic_coin);
         }
         else{
             game_grid[0][rand_col].setImageResource(R.drawable.ic_rock);
-            game_grid[0][rand_col].setTag((Integer) R.drawable.ic_rock);
+            game_grid[0][rand_col].setTag(R.drawable.ic_rock);
         }
     }
 
@@ -335,6 +329,8 @@ public class Activity_Game extends AppCompatActivity {
             }
         }
         //score update
+        //How much scores will be reduced by a collision with a rock
+        int COLLISION_SCORE_SUB = 1000;
         addScore(-COLLISION_SCORE_SUB);
         //gameover
         if(game_hearts[0].getVisibility()==View.INVISIBLE)

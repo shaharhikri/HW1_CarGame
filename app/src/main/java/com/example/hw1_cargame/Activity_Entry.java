@@ -6,12 +6,9 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
-import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 public class Activity_Entry extends AppCompatActivity {
 

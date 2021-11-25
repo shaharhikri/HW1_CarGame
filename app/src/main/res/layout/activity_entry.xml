@@ -17,18 +17,18 @@
             android:src="@drawable/entry_background" />
 
     <TextView
-            android:id="@+id/entry_label"
-            android:layout_width="370dp"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
-            android:text="CAR GAME"
-            android:textColor="#e6f4ff  "
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+        android:id="@+id/entry_label"
+        android:layout_width="370dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/entry_label_text"
+        android:textColor="#e6f4ff  "
+        android:textSize="60sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/entry_play_btn"
@@ -38,7 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="300dp"
-        android:text="PLAY"
+        android:text="@string/play_btn_text"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="420dp"
-        android:text="TOP 10"
+        android:text="@string/score_btn_text"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="500dp"
-        android:text="SETTINGS"
+        android:text="@string/settings_btn_text"
         android:textSize="18sp"
         android:textStyle="bold" />
 

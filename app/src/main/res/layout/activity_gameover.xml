@@ -24,11 +24,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
-        android:text="GAME OVER"
+        android:gravity="center"
+        android:text="@string/gameover_label_text"
         android:textColor="@color/white"
         android:textSize="60sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/gameover_score_label"
@@ -38,7 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="140dp"
-        android:text="SCORE"
+        android:text="@string/no_text"
         android:textColor="#dcb9df"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -53,7 +53,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="250dp"
-        android:text="PLAY"
+        android:text="@string/play_btn_text"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -65,19 +65,16 @@
         android:layout_alignParentStart="true"
         android:layout_marginVertical="15dp"
         android:layout_marginHorizontal="15dp"
-        android:text="MENU" />
+        android:text="@string/menu_btn_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/gameover_scores_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginVertical="15dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="15dp"
-        android:text="TOP 10" />
-
-<!--    android:background="#ff8080"-->
-<!--    app:backgroundTint="#ff8080"-->
+        android:layout_marginVertical="15dp"
+        android:text="@string/score_btn_text" />
 
 </RelativeLayout>

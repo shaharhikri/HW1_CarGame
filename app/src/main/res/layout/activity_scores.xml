@@ -39,10 +39,10 @@
             android:id="@+id/scores_header_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SCORES"
+            android:text="@string/scores_label_text"
             android:textColor="#837070"
-            android:textStyle="bold"
-            android:textSize="45sp" />
+            android:textSize="45sp"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:id="@+id/frame1"

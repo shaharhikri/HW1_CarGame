@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -40,13 +39,6 @@ public class Activity_Settings extends AppCompatActivity {
     private void getDataFromBundle(){
         speed_setting = bundle.getString(MSP_Manager.SPEED_KEY);
         controlsType_setting = bundle.getString(MSP_Manager.CONTROL_TYPE_KEY);
-
-//        speed_setting = msp_manager.getSpeed();
-//        if(speed_setting.compareTo(MSP_Manager.NONE_VAL)==0)
-//            speed_setting = MSP_Manager.BUTTONS_VAL;
-//        controlsType_setting = msp_manager.getControlsType();
-//        if(controlsType_setting.compareTo(MSP_Manager.NONE_VAL)==0)
-//            controlsType_setting = MSP_Manager.HIGH_VAL;
     }
 
     private void initViews() {
@@ -104,12 +96,11 @@ public class Activity_Settings extends AppCompatActivity {
     private void updateMSP() {
         msp_manager.updateSpeed(speed_setting);
         msp_manager.updateControlsType(controlsType_setting);
-        Log.d("SHAHARMSP3", speed_setting+" "+controlsType_setting);
     }
 
     private void findViews() {
-        rb_speed = (RadioGroup) findViewById(R.id.radiobuttons_speed);
-        rb_controls = (RadioGroup) findViewById(R.id.radiobuttons_controls);
+        rb_speed = findViewById(R.id.radiobuttons_speed);
+        rb_controls = findViewById(R.id.radiobuttons_controls);
         exitBtn = findViewById(R.id.settings_exit_btn);
     }
 

@@ -5,24 +5,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import com.bumptech.glide.Glide;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 import com.example.hw1_cargame.msp_objects.ScoreRecord;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -41,8 +34,8 @@ public class Activity_GameOver extends AppCompatActivity {
     private int score; //Score of last game.
     private FusedLocationProviderClient fusedLocationClient;
     private MSP_Manager msp_manager;
-    private static float DEFAULT_LON = 0;
-    private static float DEFAULT_LAT = 0;
+    private final float DEFAULT_LON = 0;
+    private final float DEFAULT_LAT = 0;
     private Bundle bundle;
 
 
@@ -104,7 +97,7 @@ public class Activity_GameOver extends AppCompatActivity {
         Callback_EndGetLocation end_of_addScoreToMSP = (lon, lat)->{
             //Create NEW SCORERECORD
             ScoreRecord r = new ScoreRecord().setScore(score).setDate(getCurrentFormatedDate()).setLat(lat).setLon(lon);
-            Log.d("MyLocation", "latitude: "+lat+", longitude: "+lon);
+//            Log.d("MyLocation", "latitude: "+lat+", longitude: "+lon);
             //UPDATE SCOREDB
             msp_manager.addScoreRecord_To_ScoreDB(r);
             msp_manager.save_ScoreDB_changes();
@@ -136,6 +129,6 @@ public class Activity_GameOver extends AppCompatActivity {
     }
 
     private static interface Callback_EndGetLocation{
-        public void afterLocationExtraction(double lon,  double lat);
+        void afterLocationExtraction(double lon,  double lat);
     }
 }

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">HW1_CarGame</string>
     <string name="google_maps_key">AIzaSyDcq3jtospB0PpbZ5KcpGwQu7gD6d2f-mw</string>
+    <string name="play_btn_text">PLAY</string>
+    <string name="score_btn_text">TOP 10</string>
+    <string name="settings_btn_text">SETTINGS</string>
+    <string name="menu_btn_text">MENU</string>
+    <string name="gameover_label_text">GAME OVER</string>
+    <string name="entry_label_text">GAME OVER</string>
+    <string name="scores_label_text">SCORES</string>
+    <string name="settings_label_text">SCORES</string>
+    <string name="no_text">NONE</string>
 </resources>

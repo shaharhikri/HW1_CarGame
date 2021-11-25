@@ -7,21 +7,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.hw1_cargame.msp_objects.ScoreRecord;
-import com.example.hw1_cargame.score_fragments.CallBack_ScoreList;
 import com.example.hw1_cargame.score_fragments.Fragment_GoogleMap;
 import com.example.hw1_cargame.score_fragments.Fragment_ScoreList;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 public class Activity_Scores extends AppCompatActivity {
 
-
-//    private ScoresDB scoresDB;
     MSP_Manager msp_manager;
     private Button exitBtn;
-
-    private Fragment_ScoreList fragmentList;
-    private Fragment_GoogleMap fragmentMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +41,12 @@ public class Activity_Scores extends AppCompatActivity {
         });
 
         //fragments
-        fragmentMap = new Fragment_GoogleMap();
+        Fragment_GoogleMap fragmentMap = new Fragment_GoogleMap();
         fragmentMap.setActivity(this);
         getSupportFragmentManager().beginTransaction().add(R.id.frame2, fragmentMap).commit();
-        fragmentList = new Fragment_ScoreList();
+        Fragment_ScoreList fragmentList = new Fragment_ScoreList();
         fragmentList.setActivity(this);
-        fragmentList.setCallBackList(r -> { fragmentMap.setLocation(r);});
+        fragmentList.setCallBackList(fragmentMap::setLocation);
         fragmentList.setScoresDB(msp_manager.getScoresDB());
         getSupportFragmentManager().beginTransaction().add(R.id.frame1, fragmentList).commit();
     }

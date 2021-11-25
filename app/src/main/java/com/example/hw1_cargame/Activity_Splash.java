@@ -1,24 +1,18 @@
 package com.example.hw1_cargame;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
 import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
-
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 public class Activity_Splash extends AppCompatActivity {
 
-    final int ANIM_DURATION = 1200;
+    private final int ANIM_DURATION = 1200;
     private ImageView splash_IMG_logo;
-    private MSP_Manager msp_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +31,15 @@ public class Activity_Splash extends AppCompatActivity {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
-        splash_IMG_logo.setY(height / 2);
+        splash_IMG_logo.setY((float)height / 2);
         splash_IMG_logo.setScaleY(0.0f);
         splash_IMG_logo.setScaleX(0.0f);
         splash_IMG_logo.animate()
-                .scaleY(1.0f)
-                .scaleX(1.0f)
-                .translationY(0)
-                .setDuration(ANIM_DURATION)
-                .setInterpolator(new AccelerateInterpolator())
+                .scaleY(1.0f).scaleX(1.0f).translationY(0)
+                .setDuration(ANIM_DURATION).setInterpolator(new AccelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(Animator animation) {
-                    }
+                    public void onAnimationStart(Animator animation) { }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -57,20 +47,16 @@ public class Activity_Splash extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
+                    public void onAnimationCancel(Animator animation) { }
 
                     @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
+                    public void onAnimationRepeat(Animator animation) { }
                 });
     }
 
 
     private void openGame(){
-        msp_manager = new MSP_Manager();
+        MSP_Manager msp_manager = new MSP_Manager();
         msp_manager.save_ScoreDB_changes();
         msp_manager.create_SpeedValue_IfDoesntExist();
         msp_manager.create_ControlsType_IfDoesntExist();
