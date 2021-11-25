@@ -1,4 +1,4 @@
-package com.example.hw1_cargame.score_objects;
+package com.example.hw1_cargame.msp_objects;
 
 public class ScoreRecord {
     private int score;

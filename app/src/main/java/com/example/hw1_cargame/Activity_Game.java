@@ -24,18 +24,12 @@ import com.example.hw1_cargame.control_fragments.CallBack_Controll;
 import com.example.hw1_cargame.control_fragments.Fragment_Controls;
 import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;
 import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
+import com.example.hw1_cargame.msp_objects.MSP;
+import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
-    /*For bandle from past activities*/
-    public static final String ACCELOMETER_VAL = "ACCELOMETER_VAL";
-    public static final String BUTTONS_VAL = "BUTTONS_VAL";
-    public static final String CONTROL_TYPE_KEY = "CONTROL_TYPE_KEY";
-
-    public static final String LOW_VAL = "LOW_VAL";
-    public static final String HIGH_VAL = "HIGH_VAL";
-    public static final String SPEED_KEY = "LOW_KEY";
 
     /*Game fields*/
     //Views
@@ -91,7 +85,6 @@ public class Activity_Game extends AppCompatActivity {
         if(resume)
             startTimer();
     };
-
     /*Pause fields*/
     private Button pause_resume_btn;
     private RelativeLayout pause_layout;
@@ -104,9 +97,10 @@ public class Activity_Game extends AppCompatActivity {
     private int back_clicks_count = 0;
     private final Handler handler_back = new Handler();
     private final int DOUBLE_CLICK_BACK_DELAY = 1000;
-
     /*Game Over*/
     private final int GAMEOVER_DELAY = 2000;
+    private String speed_setting, controlsType_setting;
+    private Bundle bundle;
 
 
     /*-----------------Android time circle funtions-----------------*/
@@ -125,9 +119,12 @@ public class Activity_Game extends AppCompatActivity {
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         coin_mp = MediaPlayer.create(this, R.raw.coin);
         colision_mp = MediaPlayer.create(this, R.raw.crash);
+        bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
+        speed_setting = bundle.getString(MSP_Manager.SPEED_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.SPEED_KEY,MSP_Manager.LOW_VAL);
+        controlsType_setting = bundle.getString(MSP_Manager.CONTROL_TYPE_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.CONTROL_TYPE_KEY,MSP_Manager.BUTTONS_VAL);
+        Log.d("ShaharNullCheck", "Activity_Game::onCreate: sp="+speed_setting+" con="+controlsType_setting);
 
         initViews();
-
         enablePausebtn();
         game_layout.setVisibility(View.VISIBLE);
         pause_layout.setVisibility(View.INVISIBLE);
@@ -219,16 +216,13 @@ public class Activity_Game extends AppCompatActivity {
         addScore(0);
 
         //init Game Speed
-        String speed = MSP.getMe().getString(Activity_Game.SPEED_KEY,Activity_Game.LOW_VAL);
-        Log.d("SHAHARMSP555", "initGameSpeed: "+speed);
-        if(speed.compareTo(Activity_Game.LOW_VAL)==0)
+        if(speed_setting.compareTo(MSP_Manager.LOW_VAL)==0)
             start_delay = (int) ( LOW_SPEED_FACTOR * start_delay);
         else
             start_delay = (int) (HIGH_SPEED_FACTOR * start_delay);
 
         //init Game Controls
-        String controlsType = MSP.getMe().getString(Activity_Game.CONTROL_TYPE_KEY,Activity_Game.BUTTONS_VAL);
-        if(controlsType.compareTo(Activity_Game.BUTTONS_VAL)==0)
+        if(controlsType_setting.compareTo(MSP_Manager.BUTTONS_VAL)==0)
             fragmentControls = new Fregment_Buttons();
         else
             fragmentControls = new Fregment_Accelometer();
@@ -420,10 +414,9 @@ public class Activity_Game extends AppCompatActivity {
         disableControls();
         disablePausebtn();
         handler.postDelayed(()->{
-            Bundle bundle = new Bundle();
-            bundle.putInt(Activity_GameOver.SCORE_KEY, score);
             Intent myIntent = new Intent(this, Activity_GameOver.class);
-            myIntent.putExtra("Bundle", bundle);
+            bundle.putInt(Activity_GameOver.SCORE_KEY, score);
+            myIntent.putExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE, bundle);
             startActivity(myIntent);
             finish();
         }, GAMEOVER_DELAY);

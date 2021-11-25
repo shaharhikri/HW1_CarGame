@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.hw1_cargame.R;
-import com.example.hw1_cargame.score_objects.ScoreRecord;
-import com.example.hw1_cargame.score_objects.ScoresDB;
+import com.example.hw1_cargame.msp_objects.ScoreRecord;
+import com.example.hw1_cargame.msp_objects.ScoresDB;
 
 public class Fragment_ScoreList extends Fragment {
 
     private AppCompatActivity activity;
-    private CallBack_List callBackList;
+    private CallBack_ScoreList callBackList;
     private ScoresDB scoresDB;
 
     //Rows
@@ -29,7 +29,7 @@ public class Fragment_ScoreList extends Fragment {
         this.activity = activity;
     }
 
-    public void setCallBackList(CallBack_List callBackList) {
+    public void setCallBackList(CallBack_ScoreList callBackList) {
         this.callBackList = callBackList;
     }
 
@@ -91,11 +91,11 @@ public class Fragment_ScoreList extends Fragment {
             layouts[i].setVisibility(View.GONE);
         int len = Math.min(10, scoresDB.getRecords().size());
         for (int i = 0; i < len; i++) {
+            ScoreRecord r = scoresDB.getRecords().get(i);
             layouts[i].setVisibility(View.VISIBLE);
             layouts[i].setOnClickListener(v -> {
-                //callBackList.
+                callBackList.pinOnMap(r);
             });
-            ScoreRecord r = scoresDB.getRecords().get(i);
             scores[i].setText(""+r.getScore());
             times[i].setText(r.getDate());
         }

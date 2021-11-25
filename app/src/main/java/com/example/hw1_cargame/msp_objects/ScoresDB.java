@@ -1,13 +1,8 @@
-package com.example.hw1_cargame.score_objects;
-
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
+package com.example.hw1_cargame.msp_objects;
 
 import java.util.ArrayList;
 
-public class ScoresDB {
-    public final static String SCORES_DB_KEY = "SCORES_DB_KEY";
+public class ScoresDB{
 
     private ArrayList<ScoreRecord> records = new ArrayList<ScoreRecord>();
 
@@ -17,9 +12,16 @@ public class ScoresDB {
         return records;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public ScoresDB setRecords(ArrayList<ScoreRecord> records) {
         this.records = records;
         return this;
+    }
+
+    public Object clone(){
+        ScoresDB sb_clone = new ScoresDB();
+        for(ScoreRecord r: this.records){
+            sb_clone.getRecords().add(r);
+        }
+        return sb_clone;
     }
 }

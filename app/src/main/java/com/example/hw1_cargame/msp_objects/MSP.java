@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.msp_objects;
 
 import android.content.Context;
 import android.content.SharedPreferences;

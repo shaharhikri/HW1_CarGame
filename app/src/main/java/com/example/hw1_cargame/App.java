@@ -2,6 +2,8 @@ package com.example.hw1_cargame;
 
 import android.app.Application;
 
+import com.example.hw1_cargame.msp_objects.MSP;
+
 public class App extends Application {
 
     @Override
