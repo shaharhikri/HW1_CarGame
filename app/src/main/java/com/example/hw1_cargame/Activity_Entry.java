@@ -27,15 +27,16 @@ public class Activity_Entry extends AppCompatActivity {
         setContentView(R.layout.activity_entry);
         findViews();
         fixBackground();
+        grantLocationPermission();
         bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
         initEntryPlayBtn();
-        grantLocationPermission();
     }
 
     private void grantLocationPermission() {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
     }
+
 
     //fix background bitmap - prevents errors in old phones
     private void fixBackground(){

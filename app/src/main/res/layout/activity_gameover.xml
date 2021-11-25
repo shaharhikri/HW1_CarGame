@@ -53,7 +53,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="120dp"
         android:layout_marginTop="250dp"
-        android:text="play"
+        android:text="PLAY"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginVertical="15dp"
         android:layout_marginHorizontal="15dp"
-        android:text="Menu" />
+        android:text="MENU" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/gameover_scores_btn"
@@ -75,7 +75,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginVertical="15dp"
         android:layout_marginHorizontal="15dp"
-        android:text="Scores" />
+        android:text="TOP 10" />
 
 <!--    android:background="#ff8080"-->
 <!--    app:backgroundTint="#ff8080"-->

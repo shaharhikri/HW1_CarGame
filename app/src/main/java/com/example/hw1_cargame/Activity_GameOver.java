@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class Activity_GameOver extends AppCompatActivity {
     public final static String SCORE_KEY = "SCORE_KEY";
-    public final static String BUNDLE_KEY = "SPEED_AND_CONTROL_AND_SCORE_BUNDLE";
+    public final static String SPEED_AND_CONTROL_AND_SCORE_BUNDLE = "SPEED_AND_CONTROL_AND_SCORE_BUNDLE";
 
 
     /*GameOver fields*/
@@ -55,7 +55,7 @@ public class Activity_GameOver extends AppCompatActivity {
 
         fixBackground();
         findViews();
-        bundle = getIntent().getBundleExtra(Activity_GameOver.BUNDLE_KEY);
+        bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
         getScoreFromBundle();
         initViews();
         msp_manager = new MSP_Manager();
@@ -96,7 +96,7 @@ public class Activity_GameOver extends AppCompatActivity {
     private void gotoActivity(Class activityClass){
         Intent myIntent = new Intent(this, activityClass);
         bundle.putInt(Activity_GameOver.SCORE_KEY,-1);
-        myIntent.putExtra(Activity_GameOver.BUNDLE_KEY, bundle);
+        myIntent.putExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE, bundle);
         startActivity(myIntent);
     }
 
