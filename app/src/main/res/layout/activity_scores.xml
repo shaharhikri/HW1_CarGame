@@ -44,11 +44,19 @@
             android:textSize="45sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/scores_instruction_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap the score to see its location on the map."
+            android:textColor="#6A6161"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <FrameLayout
             android:id="@+id/frame1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="24dp"
             android:layout_weight="1"
             android:background="#000000" />
 
