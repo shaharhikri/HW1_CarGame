@@ -23,11 +23,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="@string/settings_label_text"
         android:textColor="#838300  "
         android:textSize="50sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/settings_type_label"

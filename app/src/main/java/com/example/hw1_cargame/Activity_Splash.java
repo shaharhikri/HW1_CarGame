@@ -66,12 +66,11 @@ public class Activity_Splash extends AppCompatActivity {
         Bundle bundle = new Bundle();
         String speed_setting = msp_manager.getSpeed();
         String controlsType_setting = msp_manager.getControlsType();
-
         bundle.putString(MSP_Manager.SPEED_KEY,speed_setting);
         bundle.putString(MSP_Manager.CONTROL_TYPE_KEY,controlsType_setting);
         bundle.putInt(Activity_GameOver.SCORE_KEY,-1);
-
         myIntent.putExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE, bundle);
+
         startActivity(myIntent);
         finish();
     }
