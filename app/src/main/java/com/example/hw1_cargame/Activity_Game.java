@@ -26,7 +26,6 @@ import com.example.hw1_cargame.msp_objects.MSP_Manager;
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
-
     /*Game fields*/
     //Views
     private ImageView[][] game_grid;
@@ -36,6 +35,7 @@ public class Activity_Game extends AppCompatActivity {
     private RelativeLayout game_layout;
     private Fragment_Controls fragmentControls; // private ImageButton game_left_btn, game_right_btn;
     private final CallBack_Controll controllCallBack = new CallBack_Controll() {
+
         @Override
         public void moveLeft() {
             if(car_col>0)
@@ -48,6 +48,22 @@ public class Activity_Game extends AppCompatActivity {
             if(car_col<cols-1)
                 move(+1);
             vibrate(GAME_BTN_VIBE_TIME);
+        }
+
+        private boolean speeded_up = false;
+
+        @Override
+        public void speedUp() {
+                base_delay = (int) (base_delay * SPEEDUP_FACTOR);
+                if (base_delay<BASE_DELAY_MIN)
+                    base_delay = BASE_DELAY_MIN;
+        }
+
+        @Override
+        public void speedDown() {
+            base_delay = (int) (base_delay / SPEEDUP_FACTOR);
+            if (base_delay>BASE_DELAY_MAX)
+                base_delay = BASE_DELAY_MAX;
         }
     };
     //Vars
@@ -69,7 +85,10 @@ public class Activity_Game extends AppCompatActivity {
     //Timer vars
     private final Handler handler = new Handler();
     private int delay;
-    private int start_delay = 1000; //starting delay
+    private int base_delay = 1000; //starting delay
+    private static double SPEEDUP_FACTOR = 0.1;
+    private static int BASE_DELAY_MIN = 200;
+    private static int BASE_DELAY_MAX = 1000;
     private final float LOW_SPEED_FACTOR = 1.5f;  //start_delay multiplies with this if user chose in low speed
     private final float HIGH_SPEED_FACTOR = 0.5f; //start_delay multiplies with this if user chose in high speed
     private final int SPEEDUP_SCORE_STEP = 1000;
@@ -110,7 +129,7 @@ public class Activity_Game extends AppCompatActivity {
         cols = game_grid[0].length;
         rand = new Random();
         random_row0 = false;
-        delay = start_delay;
+        delay = base_delay;
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         coin_mp = MediaPlayer.create(this, R.raw.coin);
         colision_mp = MediaPlayer.create(this, R.raw.crash);
@@ -176,7 +195,7 @@ public class Activity_Game extends AppCompatActivity {
     //Continues the game.
     private void startTimer(){
         resume = true;
-        delay = (int) (start_delay *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
+        delay = (int) (base_delay *  Math.pow(DELAY_REDUCE_FACTOR, (double)score/SPEEDUP_SCORE_STEP+1));
         handler.postDelayed(forward_run, delay);
     }
 
@@ -211,9 +230,9 @@ public class Activity_Game extends AppCompatActivity {
 
         //init Game Speed
         if(speed_setting.compareTo(MSP_Manager.LOW_VAL)==0)
-            start_delay = (int) ( LOW_SPEED_FACTOR * start_delay);
+            base_delay = (int) ( LOW_SPEED_FACTOR * base_delay);
         else
-            start_delay = (int) (HIGH_SPEED_FACTOR * start_delay);
+            base_delay = (int) (HIGH_SPEED_FACTOR * base_delay);
 
         //init Game Controls
         if(controlsType_setting.compareTo(MSP_Manager.BUTTONS_VAL)==0)

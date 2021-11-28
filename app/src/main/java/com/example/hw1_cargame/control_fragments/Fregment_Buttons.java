@@ -20,6 +20,12 @@ public class Fregment_Buttons extends Fragment_Controls {
         public void moveLeft() { }
         @Override
         public void moveRight() { }
+
+        @Override
+        public void speedUp() { }
+
+        @Override
+        public void speedDown() { }
     };
     private AppCompatActivity activity;
 

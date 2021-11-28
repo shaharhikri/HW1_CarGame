@@ -27,8 +27,7 @@ public class Fregment_Accelometer extends Fragment_Controls {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_accelometer, container, false);
-        sensorManager = (SensorManager) (activity.getSystemService(Context.SENSOR_SERVICE));
-        accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        initSensor();
 
         accSensorEventListener = new SensorEventListener() {
             @Override
@@ -38,6 +37,12 @@ public class Fregment_Accelometer extends Fragment_Controls {
                     controllCallBack.moveRight();
                 else if(x>=NO_TILT_LIMIT)
                     controllCallBack.moveLeft();
+
+                float y = event.values[1];
+                if(y<=-NO_TILT_LIMIT)
+                    controllCallBack.speedUp();
+                else if(y>=NO_TILT_LIMIT)
+                    controllCallBack.speedDown();
             }
 
             @Override
@@ -49,9 +54,10 @@ public class Fregment_Accelometer extends Fragment_Controls {
         return view;
     }
 
-//    private void initSensor() {
-//
-//    }
+    private void initSensor() {
+        sensorManager = (SensorManager) (activity.getSystemService(Context.SENSOR_SERVICE));
+        accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+    }
 
     @Override
     public void setActivity(AppCompatActivity activity) {
