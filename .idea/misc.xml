@@ -5,8 +5,12 @@
       <map>
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable-anydpi/ic_action_left.xml" value="0.2453125" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable-anydpi/ic_action_right.xml" value="0.2453125" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2635416666666667" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/btn_background.xml" value="0.2453125" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/ic_heart.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/ic_myappicon_background.xml" value="0.17592592592592593" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/ic_myappicon_foreground.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/drawable/pause_btn_background.xml" value="0.15493421052631579" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/accelometer.xml" value="0.25" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/activity_entry.xml" value="0.23125" />
@@ -26,6 +30,9 @@
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/game_layout.xml" value="0.1875" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/game_panel.xml" value="0.25" />
         <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/layout/gameover_layout.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher_new_round.xml" value="0.17592592592592593" />
+        <entry key="..\:/Users/Shahar/AndroidStudioProjects/HW1_CarGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17962962962962964" />
       </map>
     </option>
   </component>
