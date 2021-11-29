@@ -5,7 +5,7 @@
     android:id="@+id/gameover_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_GameOver">
+    tools:context=".activities.Activity_GameOver">
 
     <ImageView
         android:id="@+id/gameover_back"

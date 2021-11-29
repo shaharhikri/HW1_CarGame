@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.control_fragments.CallBack_Controll;
 import com.example.hw1_cargame.control_fragments.Fragment_Controls;
 import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;

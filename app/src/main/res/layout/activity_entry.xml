@@ -5,7 +5,7 @@
     android:id="@+id/entry_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_Entry">
+    tools:context=".activities.Activity_Entry">
 
     <ImageView
             android:id="@+id/entry_back"

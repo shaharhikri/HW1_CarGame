@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 import com.example.hw1_cargame.msp_objects.ScoreRecord;
 import com.google.android.gms.location.FusedLocationProviderClient;

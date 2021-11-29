@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
+
+import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 public class Activity_Splash extends AppCompatActivity {

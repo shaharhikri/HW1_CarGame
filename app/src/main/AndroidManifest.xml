@@ -16,7 +16,7 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.HW1_CarGame" >
         <activity
-            android:name=".Activity_Splash"
+            android:name=".activities.Activity_Splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,23 +29,23 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Activity_Entry"
+            android:name=".activities.Activity_Entry"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity_Game"
+            android:name=".activities.Activity_Game"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity_GameOver"
+            android:name=".activities.Activity_GameOver"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity_Settings"
+            android:name=".activities.Activity_Settings"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity_Scores"
+            android:name=".activities.Activity_Scores"
             android:exported="false" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.score_fragments.Fragment_GoogleMap;
 import com.example.hw1_cargame.score_fragments.Fragment_ScoreList;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;

@@ -1,4 +1,4 @@
-package com.example.hw1_cargame;
+package com.example.hw1_cargame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
 public class Activity_Settings extends AppCompatActivity {
