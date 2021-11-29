@@ -24,6 +24,8 @@ import com.example.hw1_cargame.control_fragments.Fragment_Controls;
 import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;
 import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
+
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class Activity_Game extends AppCompatActivity {
     private ImageView[] game_hearts;
     private ImageButton game_btn_pause;
     private TextView game_score_label;
+    private TextView game_odometer_label;
     private RelativeLayout game_layout;
     private Fragment_Controls fragmentControls; // private ImageButton game_left_btn, game_right_btn;
     private final CallBack_Controll controllCallBack = new CallBack_Controll() {
@@ -68,6 +71,7 @@ public class Activity_Game extends AppCompatActivity {
         }
     };
     //Vars
+    private int distance;
     private int score;
     private final int COIN_SCORE_ADD = 1000; //How much scores will be increased by a coin picking up
     private final int FORWARD_SCORE_ADD = 200; //How much scores will be increased in the progress of the track in one stage
@@ -137,6 +141,8 @@ public class Activity_Game extends AppCompatActivity {
         bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
         speed_setting = bundle.getString(MSP_Manager.SPEED_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.SPEED_KEY,MSP_Manager.LOW_VAL);
         controlsType_setting = bundle.getString(MSP_Manager.CONTROL_TYPE_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.CONTROL_TYPE_KEY,MSP_Manager.BUTTONS_VAL);
+        score = 0;
+        distance = 0;
 
         initViews();
         enablePausebtn();
@@ -180,6 +186,7 @@ public class Activity_Game extends AppCompatActivity {
         game_layout = findViewById(R.id.game_layout);
         game_btn_pause = findViewById(R.id.game_btn_pause);
         game_score_label = findViewById(R.id.game_score_label);
+        game_odometer_label = findViewById(R.id.game_odometer_label);
 
         //Pause
         pause_resume_btn = findViewById(R.id.pause_resume_btn);
@@ -226,7 +233,6 @@ public class Activity_Game extends AppCompatActivity {
             heart.setVisibility(View.VISIBLE);
 
         //init Score
-        score = 0;
         addScore(0);
 
         //init Game Speed
@@ -276,8 +282,24 @@ public class Activity_Game extends AppCompatActivity {
         game_score_label.setText((""+score));
     }
 
+    public void updateOdometer() {
+        distance++;
+        String odometer_str = "";
+        if(distance>1000) {
+            odometer_str += ((float) distance) / 1000;
+            odometer_str += "k";
+        }
+        else{
+            odometer_str+= distance;
+        }
+        odometer_str+="m";
+        game_odometer_label.setText(odometer_str);
+    }
+
     //Move game_grid forward.
     private void forwardGrid(){
+        updateOdometer();
+
         for (int i = rows-1; i>0; i--)
             copyRow(i-1,i);
         if(random_row0)

@@ -30,6 +30,19 @@
             android:text="0"
             android:textSize="30sp" />
 
+        <TextView
+            android:id="@+id/game_odometer_label"
+            android:layout_width="1000dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="46dp"
+            android:gravity="left"
+            android:text="0m"
+            android:textColor="#8BC34A"
+            android:textSize="24sp" />
+
         <ImageView
             android:id="@+id/game_IMG_heart1"
             android:layout_width="50dp"
@@ -476,8 +489,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="52dp"
-
+            android:layout_marginTop="82dp"
             android:background="@drawable/pause_btn_background"
             android:src="@drawable/ic_action_pause" />
 
@@ -501,11 +513,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="60dp"
+            android:gravity="center"
             android:text="PAUSED"
             android:textColor="@color/white"
             android:textSize="60sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/pause_resume_btn"
