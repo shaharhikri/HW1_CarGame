@@ -36,35 +36,23 @@ public class Fragment_GoogleMap extends Fragment {
         View view = inflater.inflate(R.layout.fragment_googlemap, container, false);
         findViews(view);
         initViews(savedInstanceState);
-
-
-
-
-
         return view;
     }
 
     private void initViews(Bundle savedInstanceState) {
         mMapView.onCreate(savedInstanceState);
-
         mMapView.onResume(); // needed to get the map to display immediately
-
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
             }
         });
-    }
-
-    public void zoomOnMap(double lat, double lon) {
-
     }
 
     private void findViews(View view) {
