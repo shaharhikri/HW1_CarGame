@@ -1,7 +1,5 @@
 package com.example.hw1_cargame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,10 +7,11 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
-public class Activity_Settings extends AppCompatActivity {
+public class Activity_Settings extends Activity_BackgroundMusic {
     private String controlsType_setting;
     private String speed_setting;
 

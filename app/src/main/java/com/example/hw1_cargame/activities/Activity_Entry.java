@@ -1,6 +1,5 @@
 package com.example.hw1_cargame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -9,9 +8,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 
-public class Activity_Entry extends AppCompatActivity {
+public class Activity_Entry extends Activity_BackgroundMusic {
 
     /*Entry fields*/
     private Button entry_play_btn;

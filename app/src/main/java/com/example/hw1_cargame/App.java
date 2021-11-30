@@ -2,6 +2,7 @@ package com.example.hw1_cargame;
 
 import android.app.Application;
 
+import com.example.hw1_cargame.BackgroundMusic.BackgroundSoundService;
 import com.example.hw1_cargame.msp_objects.MSP;
 
 public class App extends Application {
@@ -11,6 +12,7 @@ public class App extends Application {
         super.onCreate();
 
         MSP.initHelper(this);
-    }
 
+        BackgroundSoundService.initHelper(this);
+    }
 }

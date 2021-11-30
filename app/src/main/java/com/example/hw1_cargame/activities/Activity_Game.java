@@ -1,7 +1,5 @@
 package com.example.hw1_cargame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -18,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.control_fragments.CallBack_Controll;
 import com.example.hw1_cargame.control_fragments.Fragment_Controls;
@@ -25,10 +24,9 @@ import com.example.hw1_cargame.control_fragments.Fregment_Accelometer;
 import com.example.hw1_cargame.control_fragments.Fregment_Buttons;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
-public class Activity_Game extends AppCompatActivity {
+public class Activity_Game extends Activity_BackgroundMusic {
     /*Game fields*/
     //Views
     private ImageView[][] game_grid;
@@ -136,8 +134,8 @@ public class Activity_Game extends AppCompatActivity {
         random_row0 = false;
         delay = base_delay;
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        coin_mp = MediaPlayer.create(this, R.raw.coin);
-        colision_mp = MediaPlayer.create(this, R.raw.crash);
+        coin_mp = MediaPlayer.create(this, R.raw.sound_coin);
+        colision_mp = MediaPlayer.create(this, R.raw.sound_crash);
         bundle = getIntent().getBundleExtra(Activity_GameOver.SPEED_AND_CONTROL_AND_SCORE_BUNDLE);
         speed_setting = bundle.getString(MSP_Manager.SPEED_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.SPEED_KEY,MSP_Manager.LOW_VAL);
         controlsType_setting = bundle.getString(MSP_Manager.CONTROL_TYPE_KEY); //INSTEAD OF MSP.getMe().getString(MSP_Manager.CONTROL_TYPE_KEY,MSP_Manager.BUTTONS_VAL);
@@ -152,14 +150,14 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         back_clicks_count = 0;
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         pauseGame();
     }
 

@@ -1,6 +1,5 @@
 package com.example.hw1_cargame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +7,11 @@ import android.util.DisplayMetrics;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
-public class Activity_Splash extends AppCompatActivity {
+public class Activity_Splash extends Activity_BackgroundMusic {
 
     private final int ANIM_DURATION = 1200;
     private ImageView splash_IMG_logo;

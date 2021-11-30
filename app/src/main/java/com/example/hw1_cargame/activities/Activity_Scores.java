@@ -1,18 +1,17 @@
 package com.example.hw1_cargame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.score_fragments.Fragment_GoogleMap;
 import com.example.hw1_cargame.score_fragments.Fragment_ScoreList;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 
-public class Activity_Scores extends AppCompatActivity {
+public class Activity_Scores extends Activity_BackgroundMusic {
 
     MSP_Manager msp_manager;
     private Button exitBtn;

@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.app.ActivityCompat;
 import com.bumptech.glide.Glide;
+import com.example.hw1_cargame.BackgroundMusic.Activity_BackgroundMusic;
 import com.example.hw1_cargame.R;
 import com.example.hw1_cargame.msp_objects.MSP_Manager;
 import com.example.hw1_cargame.msp_objects.ScoreRecord;
@@ -22,7 +23,7 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class Activity_GameOver extends AppCompatActivity {
+public class Activity_GameOver extends Activity_BackgroundMusic {
     public final static String SCORE_KEY = "SCORE_KEY";
     public final static String SPEED_AND_CONTROL_AND_SCORE_BUNDLE = "SPEED_AND_CONTROL_AND_SCORE_BUNDLE";
 

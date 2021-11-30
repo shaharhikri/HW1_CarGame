@@ -7,8 +7,6 @@ public class MSP {
 
     private final String SP_FILE = "SP_FILE";
 
-
-
     private static MSP me;
     private SharedPreferences sharedPreferences;
 
