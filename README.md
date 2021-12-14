@@ -17,4 +17,4 @@ An obstacle avoidance game fully built using Android Studio.
 
 
  ## Demo video</h3>
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/1rWsbL7IixI/0.jpg=100X30)](http://www.youtube.com/watch?v=1rWsbL7IixI "Demo")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/1rWsbL7IixI/0.jpg)](http://www.youtube.com/watch?v=1rWsbL7IixI "Demo")
